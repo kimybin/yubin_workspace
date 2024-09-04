@@ -32,9 +32,9 @@ char* solution(const char* my_string, int** queries, size_t queries_rows, size_t
 int main()
 {
     char my_string[100];
-    int **queries;
+    int **queries; // 2차원 배열이기 때문에 이중 포인터 사용
     size_t queries_rows;
-    size_t queries_cols = 2;
+    size_t queries_cols = 2; // 각 queries의 열은 2로 정해져 있음
 
     printf("Enter string: ");
     scanf("%s", my_string);
@@ -42,11 +42,11 @@ int main()
     printf("Enter rows(a two-dimensional arrangement): ");
     scanf("%zu", &queries_rows);
 
-    queries = (int**)malloc(sizeof(int*) * queries_rows);
-    for(size_t i = 0; i < queries_rows; i++)
+    queries = (int**)malloc(sizeof(int*) * queries_rows); // queries 배열의 행을 동적 할당
+    for(size_t i = 0; i < queries_rows; i++) // queries 배열의 열을 동적 할당
         queries[i] = (int*)malloc(sizeof(int)*queries_cols);
 
-    for(size_t i = 0; i < queries_rows; i++)
+    for(size_t i = 0; i < queries_rows; i++) // queries 배열의 요소들을 입력받음
     {
         printf("Enter query %zu: ", i+1);
         scanf("%d %d", &queries[i][0], &queries[i][1]);
@@ -55,11 +55,11 @@ int main()
     char* result = solution(my_string, queries, queries_rows, queries_cols);
     printf("The result is: %s\n", result);
 
-    free(result);
-    for (size_t i = 0; i < queries_rows; i++) {
-        free(queries[i]);
+    free(result); // result 동적 할당 해제
+    for (size_t i = 0; i < queries_rows; i++) { // queries 배열의 열 동적 할당
+        free(queries[i]); 
     }
-    free(queries);
+    free(queries); // queries 배열의 행 동적 할당 해제
 
     return 0;
 }
