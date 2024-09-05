@@ -10,19 +10,19 @@ char* solution(const char* my_string, int** queries, size_t queries_rows, size_t
     
     strcpy(answer, my_string);
     
-    for(int i = 0; i < queries_rows ; i++)
+    for(int i = 0; i < queries_rows ; i++) // 행렬 표를 그려보면 쉽게 이해 가능
     {       
-        int s = queries[i][0];
+        int s = queries[i][0]; // queries가 문자열의 어떤 부분을 수정할지 지정하는 인덱스 추출 
         int e = queries[i][1];
         
-        while(s < e)
+        while(s < e) // 부분 문자열 뒤집기
         {
-            char temp = answer[s];
-            answer[s] = answer[e];
+            char temp = answer[s]; 
+            answer[s] = answer[e]; 
             answer[e] = temp;
             
-            s++;
-            e--;
+            s++; // 문자열의 두 끝에서 중앙으로 접근하여 문자를 서로 교환
+            e--; // 해당 구간 내의 모든 문자 뒤집기
         }
     }
     
