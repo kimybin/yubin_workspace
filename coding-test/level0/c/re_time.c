@@ -6,9 +6,13 @@
 // 파라미터로 주어지는 문자열은 const로 주어집니다. 변경하려면 문자열을 복사해서 사용하세요.
 char* solution(const char* my_string, int** queries, size_t queries_rows, size_t queries_cols) {
     int len = strlen(my_string);
-    char* answer = (char*)malloc(sizeof(char) * (len+1));
+    char* answer = (char*)malloc(sizeof(char) * (len+1)); // 문자열의 끝에 널 문자 ('\0')가 자동으로 추가되어 문자열의 끝을 표시하기 때문에, 널 문자를 고려하여 +1을 해준 것
     
-    strcpy(answer, my_string);
+    strcpy(answer, my_string); // my_string 문자열을 복사해 answer 메모리 버퍼에 저장
+                               // strcpy 함수는 자동으로 널 문자 추가
+                               // my_string은 const char*로 주어지기 때문에 원본 문자열을 직접 수정하는 것은 불가능함. 그래서 answer라는 새로운 배열을 할당하여 복사
+                               // 원본 문자열이 변경될 수 있어서, answer 배열에서 문자열을 수정하려면, 원본 문자열을 복사한 후 그 복사본 수정
+    
     
     for(int i = 0; i < queries_rows ; i++) // 행렬 표를 그려보면 쉽게 이해 가능
     {       
