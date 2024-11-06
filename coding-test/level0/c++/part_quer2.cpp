@@ -15,14 +15,17 @@ vector<int> solution(vector<int> arr, vector<vector<int> > queries) {
         int e = queries[i][1];
         int k = queries[i][2];
         
-        int min_value = INT_MAX; //이해 안됨 
+        int min_value = INT_MAX; // INT_MAX는 정수형의 최솟값을 구하기 위해 사용됨. 
+        // 배열이나 벡터에서 특정 조건을 만족하는 가장 작은 값을 찾으려고 할 때 초기값으로 INT_MAX를 설정하면 어떤 값과 비교해도 해당 값이 작게 나오게 됨. 
+        // 배열의 첫 번째 값과 비교할 때 자동으로 min_value가 배열의 첫 번째 값으로 설정됨. 
+        // min_value보다 작은 값이 나타나면 그 값으로 min_value를 업데이트하므로 결국 min_value에는 배열 전체에서 가장 작은 값이 저장됨. 
         bool flag = false;
         
         for(int j = s; j <= e; j++)
         {
             if(arr[j] > k && arr[j] < min_value)
             {
-                min_value = arr[j];
+                min_value = arr[j]; // 최솟값 업데이트
                 flag = true;
             }    
         }
