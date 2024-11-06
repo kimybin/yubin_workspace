@@ -15,7 +15,7 @@ vector<int> solution(vector<int> arr, vector<vector<int> > queries) {
         int e = queries[i][1];
         int k = queries[i][2];
         
-        int min_value = INT_MAX;
+        int min_value = INT_MAX; //이해 안됨 
         bool flag = false;
         
         for(int j = s; j <= e; j++)
@@ -44,7 +44,7 @@ int main()
 
     cout << "Enter length of arr: ";
     cin >> arr_len;
-    arr.resize(arr_len); // 벡터 크기 미리 설정
+    arr.resize(arr_len); // arr 벡터 크기를 arr_len만큼 미리 설정
 
     for(int i = 0; i < arr_len; i++)
     {
@@ -57,9 +57,11 @@ int main()
 
     for(int i = 0; i < queries_len; i++)
     {
-        vector<int> query(3); // 3개의 요소를 가지는 벡터
+        vector<int> query(3); // 3개의 요소를 가지는 벡터(애초에 3으로 정해짐)
         cout << "Enter " << i+1 << " queries: ";
-        cin >> query[0] >> query[1] >> query[2];
+        cin >> query[0] >> query[1] >> query[2]; // cin은 기본적으로 공백문자를 입력구분자로 인식
+        // 공백문자 허용:  숫자나 문자열 입력에서 공백은 값 구분자로 허용
+        // 공백문자 허용 불가: getline과 같이 문자열 전체를 입력받는 경우는 공백 포함, cin으로 단일 문자열 입력을 받을 때는 공백 구분.
         queries.push_back(query);
     }
 
